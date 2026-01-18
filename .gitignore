@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database
+database.db
+
+# Uploaded files
+static/uploads/
+
+# Environment
+.env
