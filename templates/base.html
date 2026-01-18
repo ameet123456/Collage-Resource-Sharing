@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Resource Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+   <style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff8e1, #e8f5e9);
+}
+
+.upload-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.upload-title {
+  font-weight: 600;
+  color: #17A3B9  ;
+}
+
+.form-control, .form-select {
+  border-radius: 12px;
+  padding: 12px;
+  border: 2px solid #eee;
+  transition: all 0.25s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 4px rgba(102,187,106,0.15);
+}
+
+.upload-btn {
+  background: #17A3B9;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-weight: 600;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255,152,0,0.35);
+}
+
+.icon-label {
+  color: #4caf50;
+  margin-right: 6px;
+}
+
+.form-check-input {
+  border-radius: 6px;
+}
+
+.form-check-input:checked {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+.navbar-custom {
+  background: #17A3B9;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-brand i {
+  background: white;
+  color: #17A3B9;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+.search-box {
+  background: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.search-box button {
+  background: #66bb6a;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.search-box button:hover {
+  transform: scale(1.1);
+}
+
+.logout-btn {
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.alert {
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.resource-table {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.resource-table thead th {
+  background: transparent;
+  border: none;
+  color: #555;
+  font-weight: 600;
+}
+
+.resource-row {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.15);
+}
+
+.resource-row td {
+  border: none;
+  vertical-align: middle;
+  padding: 14px;
+}
+
+.type-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.type-notes {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.type-question {
+  background: #fff3e0;
+  color: #17A3B9;
+}
+
+.download-btn {
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+
+</style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-custom px-4 py-2 d-flex align-items-center">
+  
+  <span class="navbar-brand text-white">
+    <i class="fa-solid fa-book-open"></i>
+    Resource Portal
+  </span>
+
+  {% if current_user.is_authenticated %}
+  <form class="ms-auto me-3" method="GET" action="/resources">
+    <div class="search-box">
+      <input
+        type="search"
+        name="q"
+        placeholder="Search notes & question banks..."
+      >
+      <button>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </form>
+
+  <a href="/logout" class="btn btn-dark logout-btn">
+    <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
+  </a>
+  {% endif %}
+
+</nav>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ messages[0] }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  {% endif %}
+{% endwith %}
+
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

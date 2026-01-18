@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+
+    <div class="upload-card">
+
+      <h3 class="upload-title mb-3">
+        📚 Share Your Knowledge
+      </h3>
+      <p class="text-muted mb-4">
+        Upload notes or question banks to help your peers learn better.
+      </p>
+
+      <form method="POST" enctype="multipart/form-data">
+
+        <label class="mb-1">
+          <i class="fa-solid fa-heading icon-label"></i> Title
+        </label>
+        <input class="form-control mb-3" name="title" placeholder="Title" required>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-book icon-label"></i> Subject
+        </label>
+        <input class="form-control mb-3" name="subjectName" placeholder="Subject Name" required>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-layer-group icon-label"></i> Semester
+        </label>
+        <select class="form-control mb-3" name="semester" required>
+          <option value="">Select Semester</option>
+          <option>Semester 1</option>
+          <option>Semester 2</option>
+          <option>Semester 3</option>
+          <option>Semester 4</option>
+          <option>Semester 5</option>
+          <option>Semester 6</option>
+        </select>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-code icon-label"></i> Branch
+        </label>
+        <select class="form-control mb-3" name="branch" required>
+          <option value="">Select Branch</option>
+          <option>CSE</option>
+          <option>ECE</option>
+          <option>EEE</option>
+          <option>ME</option>
+          <option>CE</option>
+        </select>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-user-graduate icon-label"></i> Batch
+        </label>
+        <select class="form-control mb-3" name="batch" required>
+          <option value="">Select Batch</option>
+          <option>2022–2026</option>
+          <option>2021–2025</option>
+          <option>2020–2024</option>
+          <option>2019–2023</option>
+        </select>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-tags icon-label"></i> Note Type
+        </label>
+        <select class="form-control mb-3" name="note_type" required>
+          <option value="">Select Note Type</option>
+          <option value="Notes">Notes</option>
+          <option value="Question Bank">Question Bank</option>
+        </select>
+
+        <label class="mb-1">
+          <i class="fa-solid fa-file-arrow-up icon-label"></i> Upload File
+        </label>
+        <input class="form-control mb-3" type="file" name="file" required>
+
+        <div class="form-check mb-3">
+  <input class="form-check-input" type="checkbox" name="ask_verification" id="verifyCheck">
+  <label class="form-check-label" for="verifyCheck">
+    Ask teacher verification before publishing
+  </label>
+</div>
+
+
+        <button class="btn upload-btn w-100">
+          🚀 Upload Resource
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

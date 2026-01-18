@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-md-10">
+
+    <!-- Welcome Card -->
+    <div class="upload-card mb-4 text-center">
+
+      <h2 class="upload-title mb-2">
+        Welcome, {{ current_user.name }}
+      </h2>
+      <p class="text-muted">
+        Access, share, and manage college study resources from one place.
+      </p>
+
+    </div>
+
+    <!-- Action Cards -->
+    <div class="row g-4">
+
+      <!-- Upload Card -->
+      <div class="col-md-6">
+        <div class="upload-card h-100 text-center">
+          <i class="fa-solid fa-upload fa-2x text-warning mb-3"></i>
+          <h5 class="mb-2">Upload Resources</h5>
+          <p class="text-muted mb-3">
+            Share notes or question banks with your peers.
+          </p>
+          <a href="/upload" class="btn upload-btn w-100">
+            Upload Now
+          </a>
+        </div>
+      </div>
+
+      <!-- View Resources Card -->
+      <div class="col-md-6">
+        <div class="upload-card h-100 text-center">
+          <i class="fa-solid fa-folder-open fa-2x text-success mb-3"></i>
+          <h5 class="mb-2">Browse Resources</h5>
+          <p class="text-muted mb-3">
+            Explore verified notes and question banks.
+          </p>
+          <a href="/resources" class="btn  upload-btn w-100">
+            View Resources
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
